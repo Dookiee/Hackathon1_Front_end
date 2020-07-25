@@ -1,0 +1,23 @@
+body {
+    background: lightblue;
+}
+
+.font {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+}
+
+.failure{
+    background-color: red !important;
+}
+
+.success{
+    background-color: green !important;
+}
+
+img{ 
+    margin-left: auto;
+    margin-right: 70px;
+    display: block;
+  }
+
