@@ -72,11 +72,13 @@ function generateLife() {
 function handleGuess(chosenLetter) {
     guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
     if (answer.indexOf(chosenLetter) >= 0) {
+        new Audio('./sounds/success.mp3').play();
         document.getElementById(chosenLetter).setAttribute('disabled', true);
         document.getElementById(chosenLetter).classList.add("success")
         guessedWord();
         checkIfGameWon();
     } else if (answer.indexOf(chosenLetter) === -1) {
+        new Audio('./sounds/failure.mp3').play();
         document.getElementById(chosenLetter).setAttribute('disabled', true);
         document.getElementById(chosenLetter).classList.add("failure")
         mistakes++;

@@ -1,5 +1,6 @@
 var update_score = () => {
     if (localStorage['result'] == ""){
+        new Audio('./sounds/level-cleared.mp3').play();
         document.getElementById('result').innerText = "You WON!!! Hurrah!!!!"
         if(localStorage['score'] == undefined){
             score_data = 100-Number(localStorage['mistakes']*10)
@@ -13,6 +14,7 @@ var update_score = () => {
     localStorage.setItem('level', Number(localStorage['level'])+1)
     document.getElementById('handleGif').setAttribute("src", "./images/success.gif")
     }else{
+        new Audio('./sounds/level-fail.mp3').play();
         document.getElementById('level_information').innerText = "You Did Not Cleared Level "+localStorage['level']
         localStorage.setItem('life',Number(localStorage['life'])-1)
         if(localStorage['life'] == 0){
