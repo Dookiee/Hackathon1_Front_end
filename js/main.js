@@ -21,6 +21,7 @@ let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
 let life = 6;
+let level=1;
 
 function randomWord() {
     answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
@@ -42,10 +43,18 @@ function generateButtons() {
     document.getElementById('input-button').innerHTML = buttonsHTML;
 }
 
+function setLevel(){
+    if(localStorage['level'] == undefined){
+        localStorage.setItem('level', 1)
+    }
+}
+
 
 function generateLife() {
     if (localStorage['life'] == undefined | localStorage['life'] == 0 ) {
         localStorage.setItem('life', life)
+        localStorage.setItem('score', 0)
+        localStorage.setItem('level', 1)
     }
     img = ''
     for (let i = 0; i < Number(localStorage['life']); i++) {
@@ -58,12 +67,6 @@ function generateLife() {
         `
     }
     document.getElementById('lifes').innerHTML = img
-}
-
-function generateScore() {
-    if (localStorage['life'] == 0) {
-        localStorage.setItem('score', 0)
-    }
 }
 
 function handleGuess(chosenLetter) {
@@ -125,7 +128,7 @@ function reset() {
     guessedWord();
     updateMistakes();
     generateButtons();
-    generateScore();
+    setLevel();
 }
 
 var init_page = () => {
@@ -134,46 +137,5 @@ var init_page = () => {
     generateLife();
     generateButtons();
     guessedWord();
-    generateScore();
+    setLevel();
 }
-
-
-// Initialising the canvas
-var canvas = document.querySelector('canvas'),
-    ctx = canvas.getContext('2d');
-
-// Setting the width and height of the canvas
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// Setting up the letters
-var letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ';
-letters = letters.split('');
-
-// Setting up the columns
-var fontSize = 10,
-    columns = canvas.width / fontSize;
-
-// Setting up the drops
-var drops = [];
-for (var i = 0; i < columns; i++) {
-  drops[i] = 1;
-}
-
-// Setting up the draw function
-function draw() {
-  ctx.fillStyle = 'rgba(0, 0, 0, .1)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  for (var i = 0; i < drops.length; i++) {
-    var text = letters[Math.floor(Math.random() * letters.length)];
-    ctx.fillStyle = '#0f0';
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    drops[i]++;
-    if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
-      drops[i] = 0;
-    }
-  }
-}
-
-// Loop the animation
-setInterval(draw, 33);
