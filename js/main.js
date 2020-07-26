@@ -26,6 +26,7 @@ let level=1;
 function randomWord() {
     answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
     document.getElementById('level').innerText = "Game Level: "+localStorage['level']
+    document.getElementById('score').innerText = "Total Score: "+localStorage['score'] 
     console.log(answer);
 }
 
