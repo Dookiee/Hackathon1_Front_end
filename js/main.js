@@ -1,4 +1,4 @@
-var programming_languages = [
+var easy = [
     "python",
     "javascript",
     "mongodb",
@@ -15,18 +15,60 @@ var programming_languages = [
     "ruby"
 ]
 
+var medium = [
+    "according",
+    "account",
+    "across",
+    "activity",
+    "actually",
+    "address",
+    "administration",
+    "agreement",
+    "attention",
+    "attorney",
+    "audience",
+    "author",
+    "authority",
+    "available",
+]
+
+var hard = [
+    "enormity",
+    "disinterested",
+    "nonplussed",
+    "colonel",
+    "irregardless",
+    "literally",
+    "aberration",
+    "abnegation",
+    "abscond",
+    "abstruse",
+    "accretion",
+    "adumbrate",
+    "aggrandize",
+    "ambivalent",
+    "anachronistic",
+    "approbation"
+]
+
 let answer = '';
 let maxWrong = 6;
 let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
 let life = 6;
-let level=1;
+let level = 1;
 
 function randomWord() {
-    answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
-    document.getElementById('level').innerText = "Game Level: "+localStorage['level']
-    document.getElementById('score').innerText = "Total Score: "+localStorage['score'] 
+    if (Number(localStorage['level']) < 5) {
+        answer = easy[Math.floor(Math.random() * easy.length)];
+    } else if (Number(localStorage['level']) < 10) {
+        answer = medium[Math.floor(Math.random() * medium.length)];
+    } else {
+        answer = hard[Math.floor(Math.random() * hard.length)];
+    }
+    document.getElementById('level').innerText = "Game Level: " + localStorage['level']
+    document.getElementById('score').innerText = "Total Score: " + localStorage['score']
     console.log(answer);
 }
 
@@ -46,12 +88,12 @@ function generateButtons() {
 }
 
 function setLevel() {
-     localStorage.setItem('level', 1)
+    localStorage.setItem('level', 1)
 }
 
 
 function generateLife() {
-    if (localStorage['life'] == undefined | localStorage['life'] == 0 ) {
+    if (localStorage['life'] == undefined | localStorage['life'] == 0) {
         localStorage.setItem('life', life)
         localStorage.setItem('score', 0)
         localStorage.setItem('level', 1)
