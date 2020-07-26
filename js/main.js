@@ -61,13 +61,17 @@ let level = 1;
 
 function randomWord() {
     if (Number(localStorage['level']) < 5) {
+        _difficulty = "EASY"
         answer = easy[Math.floor(Math.random() * easy.length)];
     } else if (Number(localStorage['level']) < 10) {
+        _difficulty = "MEDIUM"
         answer = medium[Math.floor(Math.random() * medium.length)];
     } else {
+        _difficulty = "HARD"
         answer = hard[Math.floor(Math.random() * hard.length)];
     }
     document.getElementById('level').innerText = "Game Level: " + localStorage['level']
+    document.getElementById('difficulty').innerText = "Game Difficulty: "+_difficulty
     document.getElementById('score').innerText = "Total Score: " + localStorage['score']
     console.log(answer);
 }
