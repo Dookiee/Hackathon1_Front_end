@@ -22,3 +22,4 @@
 
 8.If we guess the correct word 5 times continuously then first level will be completed and we can move to next level(word complexity).
 
+![alt text](https://github.com/Dookiee/Hackathon1_Front_end/tree/master/images/sampleGame.png?raw=true)
