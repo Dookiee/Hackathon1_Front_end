@@ -62,7 +62,7 @@ var update_message = () => {
         if(localStorage['life'] == 0){
             document.getElementById('result').innerText = "You Lost!!! You have still "+localStorage['life']+" lives"+", Better Luck next time!"
         }else{
-            document.getElementById('result').innerText = "You Lost!!! You have still "+localStorage['life']+" lives"+", Keep the sprit up and Play!"
+            document.getElementById('result').innerText = "You Lost!!! You have still "+localStorage['life']+" lives"+", Keep the spirit up and Play!"
         }
     }else{
         document.getElementById('result').innerText = "You WON!!! Hurrah!!!!";
