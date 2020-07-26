@@ -20,3 +20,6 @@ body {
     height:30px; 
 }
 
+#game_info_div{
+    margin: auto;
+}

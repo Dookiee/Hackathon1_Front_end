@@ -25,6 +25,7 @@ let level=1;
 
 function randomWord() {
     answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
+    document.getElementById('level').innerText = "Game Level: "+localStorage['level']
     console.log(answer);
 }
 
@@ -43,10 +44,8 @@ function generateButtons() {
     document.getElementById('input-button').innerHTML = buttonsHTML;
 }
 
-function setLevel(){
-    if(localStorage['level'] == undefined){
-        localStorage.setItem('level', 1)
-    }
+function setLevel() {
+     localStorage.setItem('level', 1)
 }
 
 
@@ -125,19 +124,18 @@ function reset() {
     mistakes = 0;
     guessed = [];
     document.getElementById('hangmanPic').src = './images/0.jpg';
-    randomWord();
     generateLife();
     guessedWord();
     updateMistakes();
     generateButtons();
     setLevel();
+    randomWord();
 }
 
 var init_page = () => {
     document.getElementById('maxWrong').innerHTML = maxWrong;
-    randomWord();
     generateLife();
     generateButtons();
     guessedWord();
-    setLevel();
+    randomWord();
 }
