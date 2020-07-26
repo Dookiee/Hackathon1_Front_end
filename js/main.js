@@ -134,8 +134,10 @@ function reset() {
 
 var init_page = () => {
     document.getElementById('maxWrong').innerHTML = maxWrong;
+    document.getElementById('hangmanPic').src = './images/0.jpg';
+    updateMistakes();
     generateLife();
     generateButtons();
-    guessedWord();
     randomWord();
+    guessedWord();
 }
